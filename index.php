@@ -15,10 +15,11 @@
 		<link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" href="css/bootstrap-theme.css">
 		<link href="css/responsive-slider.css" rel="stylesheet">
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:400,300,200,100,500,600,700,800,900">
 		<link rel="stylesheet" href="css/animate.css">
-        <link rel="stylesheet" href="css/style.css">
-
-		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/font-awesome.css">
+		<link rel="stylesheet" href="css/overwrite.css"> 
+        <link rel="stylesheet" href="css/style.css?version=1">
 		<!-- skin -->
 		<link rel="stylesheet" href="skin/default.css">
     </head>
@@ -35,7 +36,7 @@
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 						<span class="fa fa-bars color-white"></span>
 					</button>
-					<h1><a class="navbar-brand" href="index.html" data-0="line-height:90px;" data-300="line-height:50px;">SolarMine - Sustainable Crytocurrency Mining
+					<h1><a class="navbar-brand" href="index.php" data-0="line-height:90px;" data-300="line-height:50px;">SolarMine - Sustainable Crytocurrency Mining
 					</a></h1>
 				</div>
 				<div class="navbar-collapse collapse">
@@ -118,8 +119,6 @@
 										<div class="slide-body" data-group="slide">
 											<li><img alt="" class="img-responsive" src="img/9.jpg" width="100%" height="350"/></li>
 											<li><img alt="" class="img-responsive" src="img/10.jpg" width="100%" height="350"/></li>
-											<li><img alt="" class="img-responsive" src="img/11.jpg" width="100%" height="350"/></li>
-							
 										</div>
 									</ul>
 										<a class="slider-control left" href="#" data-jump="prev"><i class="fa fa-angle-left fa-2x"></i></a>
@@ -182,17 +181,8 @@
 						<div class="wow bounceIn" data-animation-delay="4.8s">
 							<div class="team-member">
 								<div class="profile-picture">
-									<figure><img src="img/benefit1.png" alt=""></figure>
+									<img src="img/benefit1.png" alt="">
 									<div class="profile-overlay"></div>
-										<div class="profile-social">
-											<div class="icons-wrapper">
-												<a href="#"><i class="fa fa-facebook"></i></a>
-												<a href="#"><i class="fa fa-twitter"></i></a>
-												<a href="#"><i class="fa fa-linkedin"></i></a>
-												<a href="#"><i class="fa fa-pinterest"></i></a>
-												<a href="#"><i class="fa fa-google-plus"></i></a>
-											</div>
-										</div>
 								</div>
 								<div class="team-detail">
 									<h4>Stable and Steady Profit</h4>
@@ -209,24 +199,15 @@
 							<div class="wow bounceIn">
 							<div class="team-member">
 								<div class="profile-picture">
-									<figure><img src="img/benefit2.png" alt=""></figure>
+									<img src="img/benefit2.png" alt="">
 									<div class="profile-overlay"></div>
-										<div class="profile-social">
-											<div class="icons-wrapper">
-												<a href="#"><i class="fa fa-facebook"></i></a>
-												<a href="#"><i class="fa fa-twitter"></i></a>
-												<a href="#"><i class="fa fa-linkedin"></i></a>
-												<a href="#"><i class="fa fa-pinterest"></i></a>
-												<a href="#"><i class="fa fa-google-plus"></i></a>
-											</div>
-										</div>
 								</div>
 								<div class="team-detail">
 									<h4>Flexibility</h4>
 									<span> </span>
 								</div>
 								<div class="team-bio">
-								<p>Provide stable ROI benefits for investors.  Trade "SOM" freely in the trading market at any time to participate in or exit the project.</br></br></p>
+								<p>Provide stable ROI benefits for investors.  Trade "SOM" freely in the trading market at any time to participate in or exit the project.</br></br></br></p>
 								</div>
 							</div>
 							</div>
@@ -235,24 +216,15 @@
 							<div class="wow bounceIn">
 							<div class="team-member">
 								<div class="profile-picture">
-									<figure><img src="img/benefit3.png" alt=""></figure>
+									<img src="img/benefit3.png" alt="">
 									<div class="profile-overlay"></div>
-										<div class="profile-social">
-											<div class="icons-wrapper">
-												<a href="#"><i class="fa fa-facebook"></i></a>
-												<a href="#"><i class="fa fa-twitter"></i></a>
-												<a href="#"><i class="fa fa-linkedin"></i></a>
-												<a href="#"><i class="fa fa-pinterest"></i></a>
-												<a href="#"><i class="fa fa-google-plus"></i></a>
-											</div>
-										</div>
 								</div>
 								<div class="team-detail">
 									<h4>Transparency</h4>
 									<span> </span>
 								</div>
 								<div class="team-bio">
-								<p>The dividends will be payout monthly and asset of the project will be publicized weekly.</br></br></br></p>
+								<p>The dividends will be payout monthly and asset of the project will be publicized weekly.</br></br></br></br></p>
 								</div>
 							</div>
 							</div>

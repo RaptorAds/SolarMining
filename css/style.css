@@ -7,11 +7,13 @@
 /* ==== overwrite bootstrap standard ==== */
 @import url('overwrite.css');
 @import url('animate.css');
+
+
 /*==========================================================================
   General
   ========================================================================== */
 body {
-	 font-family: "Titillium Web", Helvetica, Arial, sans-serif;
+	 font-family: "Open Sans", Helvetica, Arial, sans-serif;
 	color:#777;
 	background: #f7f7f7;
 	font-size: 16px;
@@ -25,7 +27,7 @@ body {
 }
 
 body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-	 font-family: "Raleway", Helvetica, Arial, sans-serif;
+	 font-family: "Open Sans", Helvetica, Arial, sans-serif;
 }
 h1, h2, h3, h4, h5, h6 {
 	
@@ -46,7 +48,7 @@ h5 { font-size: 16px; }
 .txt-uppercase { text-transform: uppercase; }
 
 blockquote {
-	 font-family: "Raleway", Helvetica, Arial, sans-serif;
+	 font-family: "Open Sans", Helvetica, Arial, sans-serif;
 }
 
 blockquote.bigquote {
@@ -541,7 +543,7 @@ padding-top: 30px;
   font-size: 72px;
   color: #417630;
   font-weight: bold;
-  font-family: 'Montserrat', sans-serif;
+  font-family:  "Open Sans", sans-serif;
   line-height: 100%;
 }
 .line-pricing-table .pricing-table-wrap ul li.line-price-row span.symbol {
@@ -549,7 +551,7 @@ padding-top: 30px;
   font-size: 24px;
   color: #000000;
   font-weight: normal;
-  font-family: 'Raleway', sans-serif;
+  font-family:  "Open Sans", sans-serif;
   top: -15px;
 }
 .line-pricing-table .pricing-table-wrap ul li.line-btn-row {
@@ -1141,7 +1143,7 @@ About
 }
 .team-member span {
   font-size: 0.875em;
-  font-family: 'Titillium Web', sans-serif;
+  font-family:  "Open Sans", sans-serif;
   text-transform: uppercase;
   color: #417630;
   padding-top:-10px;
@@ -1403,7 +1405,7 @@ nav#filter a {
 .testimonial h5 {
 	color: #fff;
 	font-size: 18px;
-	font-family: Georgia, sans-serif;
+	font-family:  "Open Sans", sans-serif;
 	line-height: 1.5em;
 }	
 
