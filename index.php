@@ -3,7 +3,12 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
+<?php
+session_start();
+include("simple-php-captcha.php");
+$_SESSION['captcha'] = simple_php_captcha();
+?>
+	<head>
 		<!-- BASICS -->
         <meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -18,8 +23,9 @@
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:400,300,200,100,500,600,700,800,900">
 		<link rel="stylesheet" href="css/animate.css">
 		<link rel="stylesheet" href="css/font-awesome.css">
-		<link rel="stylesheet" href="css/overwrite.css"> 
-        <link rel="stylesheet" href="css/style.css?version=1">
+		<link rel="stylesheet" href="css/overwrite.css?v=1"> 
+        <link rel="stylesheet" href="css/style.css?v=1">
+		<link rel="stylesheet" type="text/css" href="css/overlay.css?v=2" />
 		<!-- skin -->
 		<link rel="stylesheet" href="skin/default.css">
     </head>
@@ -36,13 +42,13 @@
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 						<span class="fa fa-bars color-white"></span>
 					</button>
-					<h1><a class="navbar-brand" href="index.php" data-0="line-height:90px;" data-300="line-height:50px;">SolarMine - Sustainable Crytocurrency Mining
+					<h1><a class="navbar-brand" href="index.php" data-0="line-height:90px;" data-300="line-height:50px;">SolarMine
 					</a></h1>
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav" data-0="margin-top:20px;" data-300="margin-top:5px;">
 						<li class="active"><a href="#index">Home</a></li>
-						<li><a href="#index">Get SolarMine</a></li>
+						<li><a href="#index" data-toggle="modal" data-target="#myModal" >Get SOM</a></li>
 						<li><a href="#section-about">About</a></li>
 						<li><a href="#team">White Paper</a></li>
 						<li><a href="#line-pricing">Roadmap</a></li>
@@ -66,8 +72,8 @@
 						<div class="slide-body" data-group="slide">
 							<img src="img/8.jpg" alt="">
 							<div class="caption header" data-animate="slideAppearUpToDown" data-delay="500" data-length="300">
-								<h2>Next generation mining project</h2>
-								<div class="caption-sub" data-animate="slideAppearDownToUp" data-delay="1200" data-length="300"><h4><span>Combining Solar Power with Cryptocurrency Mining</span></h4></div>
+								<h2>Next Generation Mining Project</h2>
+								<div class="caption-sub" data-animate="slideAppearDownToUp" data-delay="1200" data-length="300"><h4><span>Sustainable Cryptocurrency Mining</span></h4></div>
 								<div class="caption-sub" data-animate="slideAppearLeftToRight" data-delay="800" data-length="300"><h3></h3></div>
 							</div>
 						</div>
@@ -333,7 +339,7 @@
                     </div>
                 </li>
                 <li class="faqItem">
-                    <a class="ques" data-toggle="collapse" href="#ans5">4.What is the price of SOM?
+                    <a class="ques" data-toggle="collapse" href="#ans5">4. What is the price of SOM?
 <span class="faqCollaspe"></span></a>
                     <div class="ansBox collapse" id="ans5">
                         <table class="priceTable">
@@ -455,5 +461,127 @@
 		}	) 
 		.init();
 	</script>
+	<!-- Overlay Signup Form -->
+	<style>
+	.overlay-hugeinc {
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.5s, visibility 0s 0.5s;
+}
+
+.overlay-hugeinc.open {
+	opacity: 1;
+	visibility: visible;
+	transition: opacity 0.5s;
+}
+
+.overlay-hugeinc nav {
+	perspective: 1200px;
+}
+
+.overlay-hugeinc nav ul {
+	opacity: 0.4;
+	transform: translateY(-25%) rotateX(35deg);
+	transition: transform 0.5s, opacity 0.5s;
+}
+
+.overlay-hugeinc.open nav ul {
+	opacity: 1;
+	transform: rotateX(0deg);
+}
+
+.overlay-hugeinc.close nav ul {
+	transform: translateY(25%) rotateX(-35deg);
+}
+	</style>
+	<script>
+	$(document).ready(function(){
+		$('.button').click(function(){
+			$('#fade-wrapper').fadeIn();
+		});
+		$('#fade-wrapper').click(function(){
+			$(this).fadeOut();
+		});
+	});
+	</script>
+	<!-- Modal Overlay -->
+	<style>
+	.btn {
+		height: 32px;
+		line-height: 32px;
+		padding: 0 10px;
+		min-width: 80px;
+		font-size: 14px;
+		border-radius:  4px;
+	}
+	.btn2 {
+		background-color: #00b6ea;
+		border: 1px solid #00b6ea;
+		color: #fff;
+	}
+	.form-control{
+		border-radius:  4px;
+	}
+	select,
+	textarea,
+	input[type="text"],
+	input[type="password"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="date"],
+	input[type="month"],
+	input[type="time"],
+	input[type="week"],
+	input[type="number"],
+	input[type="email"],
+	input[type="url"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="color"],
+	.uneditable-input {
+	  -webkit-border-radius: 4 !important;
+		 -moz-border-radius: 4 !important;
+			  border-radius: 4 !important;
+	}	
+	</style>
+	  <div class="modal fade" id="myModal" role="dialog" style="padding:  5px;">
+		<div class="modal-dialog modal-lg" style="width: 60%;">
+		  <div class="modal-content" style="padding: 30px;">
+	  <div class="logoBox">
+		<span class="welcomeMsg">Please create new account</span>
+	  </div>
+	  <form class="signUpForm">
+		<div class="form-group" id="accountEmail-box">
+		  <label class="control-label" for="">Username/Email:</label>
+		  <input type="text" class="form-control" id="regist-email" >
+		  <p class="errorMsg" id="regist-email-error"></p>
+		</div>
+		<div class="form-group" id="password-box">
+		  <label class="control-label" for="">Password:</label>
+		  <input type="password" class="form-control" id="regist-password" placeholder="Enter Username 8-20 letters/numbers">
+		  <p class="errorMsg" id="regist-password-error"></p>
+		</div>
+		<div class="form-group" id="rept-password-box">
+		  <label class="control-label" for="">Confirm Password:</label>
+		  <input type="password" class="form-control" id="regist-rept-password" placeholder="">
+		  <p class="errorMsg" id="regist-rept-password-error"></p>
+		</div>
+		<div class="form-group form-group-captcha" id="captcha-box">
+		  <label class="control-label" for="">Captcha:</label>
+		  <div class="form-inline">
+			<input type="text" class="form-control" id="regist-captcha">
+			 <input type="hidden" id="regist-captcha-id">
+				<?php
+				echo '<img style="height:  34px;" src="' . $_SESSION['captcha']['image_src'] . '" alt="CAPTCHA code">';
+				?>
+			 <p class="errorMsg" id="regist-captcha-error"></p>
+		  </div>
+		</div>
+		<a href="javascript:void(0)" class="btn btn2 btnSubmit" id="regist-confirm-btn">Create new account</a>
+		  </div>
+		</div>
+	  </div>
+	<!-- End Modal Overlay Signup Form -->	
+	
 	</body>
 </html>
