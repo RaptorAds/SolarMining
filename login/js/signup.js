@@ -13,7 +13,7 @@ $(document).ready(function(){
     else {
       $.ajax({
         type: "POST",
-        url: "createuser.php",
+        url: "/login/createuser.php",
         data: "newuser="+username+"&password1="+password+"&password2="+password2+"&email="+email,
         success: function(html){
 
@@ -34,7 +34,7 @@ $(document).ready(function(){
         },
         beforeSend: function()
         {
-          $("#message").html("<p class='text-center'><img src='images/ajax-loader.gif'></p>")
+          $("#message").html("<p class='text-center'><img src='/login/images/ajax-loader.gif'></p>")
         }
       });
     }

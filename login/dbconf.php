@@ -1,9 +1,9 @@
 <?php
 //DATABASE CONNECTION VARIABLES
 $host = "localhost"; // Host name
-$username = "natsoon"; // Mysql username
-$password = "IloveUMass#316"; // Mysql password
-$db_name = "raptortracking"; // Database name
+$username = "develop"; // Mysql username
+$password = "sw#Admin123"; // Mysql password
+$db_name = "ico"; // Database name
 
 //DO NOT CHANGE BELOW THIS LINE UNLESS YOU CHANGE THE NAMES OF THE MEMBERS AND LOGINATTEMPTS TABLES
 

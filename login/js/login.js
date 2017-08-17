@@ -1,15 +1,15 @@
 $(document).ready(function () {
     "use strict";
-    $("#submit").click(function () {
+    $("#submitLogin").click(function () {
 
         var username = $("#myusername").val(), password = $("#mypassword").val();
 
         if ((username === "") || (password === "")) {
-            $("#message").html("<div class=\"alert alert-danger alert-dismissable\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>Please enter a username and a password</div>");
+            $("#messageSignIn").html("<div class=\"alert alert-danger alert-dismissable\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>Please enter a username and a password</div>");
         } else {
             $.ajax({
                 type: "POST",
-                url: "checklogin.php",
+                url: "./login/checklogin.php",
                 data: "myusername=" + username + "&mypassword=" + password,
                 dataType: 'JSON',
                 success: function (html) {
@@ -19,7 +19,7 @@ $(document).ready(function () {
                        location.reload();
                         return html.username;
                     } else {
-                        $("#message").html(html.response);
+                        $("#messageSignIn").html(html.response);
                     }
                 },
                 error: function (textStatus, errorThrown) {
@@ -27,7 +27,7 @@ $(document).ready(function () {
                     console.log(errorThrown);
                 },
                 beforeSend: function () {
-                    $("#message").html("<p class='text-center'><img src='images/ajax-loader.gif'></p>");
+                    $("#messageSignIn").html("<p class='text-center'><img src='./login/images/ajax-loader.gif'></p>");
                 }
             });
         }

@@ -5,7 +5,7 @@ include 'globalcon.php';
 include 'dbconf.php';
 
 //Set this for global site use
-$site_name = 'RaptorAds Admin System';
+$site_name = 'SolarMine';
 
 //Maximum Login Attempts
 $max_attempts = 5;
@@ -13,12 +13,12 @@ $max_attempts = 5;
 $login_timeout = 300;
 
 //ONLY set this if you want a moderator to verify users and not the users themselves, otherwise leave blank or comment out
-$admin_email = 'support@raptorads.com';
+$admin_email = '';
 
 //EMAIL SETTINGS
 //SEND TEST EMAILS THROUGH FORM TO https://www.mail-tester.com GENERATED ADDRESS FOR SPAM SCORE
 $from_email = 'support@raptorads.com'; //Webmaster email
-$from_name = 'RaptorAds Support'; //"From name" displayed on email
+$from_name = 'Support @ SolarMine'; //"From name" displayed on email
 
 //Find specific server settings at https://www.arclab.com/en/kb/email/list-of-smtp-and-pop3-servers-mailserver-list.html
 $mailServerType = 'smtp';

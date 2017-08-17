@@ -62,6 +62,9 @@ $( "#usersignup" ).validate({
     password2: {
       equalTo: "#password1"
     }
+	captchaInput: {
+	  equalTo: "<?php echo $_SESSION['captcha']['code'] ?>"
+	}
   }
 });
 </script>

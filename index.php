@@ -48,11 +48,26 @@ $_SESSION['captcha'] = simple_php_captcha();
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav" data-0="margin-top:20px;" data-300="margin-top:5px;">
 						<li class="active"><a href="#index">Home</a></li>
-						<li><a href="#index" data-toggle="modal" data-target="#myModal" >Get SOM</a></li>
+						<li>
+							<?php if (!isset($_SESSION['username'])) {
+									echo "<a href='#index' data-toggle='modal' data-target='#signup'>Signup</a>";
+								} else {   
+									echo "<a href='#index' data-toggle='modal' data-target='#accountPage'>My Account</a>";
+								}
+							?>
+						</li>
 						<li><a href="#section-about">About</a></li>
 						<li><a href="#team">White Paper</a></li>
 						<li><a href="#line-pricing">Roadmap</a></li>
 						<li><a href="#section-contact">FAQ</a></li>
+						<?php 
+						if (isset($_SESSION['username'])) {
+							#echo "<li><a>&nbsp;|&nbsp;" .$_SESSION['username']. "</a></li>";
+							echo "<li><a href='./login/logout.php'>Logout</a></li>";
+						} else { 
+							echo "<li><a href='#index' data-toggle='modal' data-target='#login'>Login</a></li>";
+						}
+						?>
 					</ul>
 				</div><!--/.navbar-collapse -->
 			</div>
@@ -461,49 +476,6 @@ $_SESSION['captcha'] = simple_php_captcha();
 		}	) 
 		.init();
 	</script>
-	<!-- Overlay Signup Form -->
-	<style>
-	.overlay-hugeinc {
-	opacity: 0;
-	visibility: hidden;
-	transition: opacity 0.5s, visibility 0s 0.5s;
-}
-
-.overlay-hugeinc.open {
-	opacity: 1;
-	visibility: visible;
-	transition: opacity 0.5s;
-}
-
-.overlay-hugeinc nav {
-	perspective: 1200px;
-}
-
-.overlay-hugeinc nav ul {
-	opacity: 0.4;
-	transform: translateY(-25%) rotateX(35deg);
-	transition: transform 0.5s, opacity 0.5s;
-}
-
-.overlay-hugeinc.open nav ul {
-	opacity: 1;
-	transform: rotateX(0deg);
-}
-
-.overlay-hugeinc.close nav ul {
-	transform: translateY(25%) rotateX(-35deg);
-}
-	</style>
-	<script>
-	$(document).ready(function(){
-		$('.button').click(function(){
-			$('#fade-wrapper').fadeIn();
-		});
-		$('#fade-wrapper').click(function(){
-			$(this).fadeOut();
-		});
-	});
-	</script>
 	<!-- Modal Overlay -->
 	<style>
 	.btn {
@@ -543,45 +515,137 @@ $_SESSION['captcha'] = simple_php_captcha();
 		 -moz-border-radius: 4 !important;
 			  border-radius: 4 !important;
 	}	
+	.form-control{
+		margin-top: 5px !important;
+	}
+	.alert-danger{
+		margin-top: 10px !important;
+	}
+	.line-btn, input[type="submit"], button[type="submit"]{
+		margin-top: 5px; !important;
+	}
+	.alert-success {
+		margin-top: 5px; !important;
+	}
+	.m_table{width:100%}.m_table tr{height:40px;}.m_table tr{border-bottom:1px solid #e5e5e5}.m_table tr:first-child{border-bottom:none}.m_table th,.m_table td{padding:0 10px;word-wrap:break-word;font-size:12px;}@media (min-width: 767px){.m_table th,.m_table td{font-size:14px}}.m_table th{background-color:#f4f6f7;font-weight:normal;color:#333333}.m_table a+a{margin-left:5px}.m_paging{text-align:center;line-height:30px;margin-top:25px}
 	</style>
-	  <div class="modal fade" id="myModal" role="dialog" style="padding:  5px;">
-		<div class="modal-dialog modal-lg" style="width: 60%;">
-		  <div class="modal-content" style="padding: 30px;">
-	  <div class="logoBox">
-		<span class="welcomeMsg">Please create new account</span>
+	  <div class="modal fade" id="signup" role="dialog" style="padding:  5px;">
+		<div class="modal-dialog">
+			<div class="modal-content" style="padding: 30px;">
+				<div class="logoBox">
+					<span class="welcomeMsg">Please create new account</span>
+				</div>
+				<div class="container" style="width:  97%;">
+				<form class="form-signup" id="usersignup" name="usersignup" method="post" action="./login/createuser.php">
+					<input name="newuser" id="newuser" type="text" class="form-control" placeholder="Username" autofocus>
+					<input name="email" id="email" type="text" class="form-control" placeholder="Email">
+					<input name="password1" id="password1" type="password" class="form-control" placeholder="Password">
+					<input name="password2" id="password2" type="password" class="form-control" placeholder="Repeat Password">
+					</br>
+					<a href="javascript:void(0)" name="Submit" id="submit" class="btn btn2 btnSubmit" type="submit">Sign up</a>
+					<div id="message"></div>
+				</form>
+				</div>
+			</div>
+		</div>
 	  </div>
-	  <form class="signUpForm">
+	  <!-- /container -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- <script src="//code.jquery.com/jquery.js"></script> -->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script type="text/javascript" src="./login/js/bootstrap.js"></script>
+    <script src="./login/js/signup.js?v=1"></script>
+    <script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
+	<script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+	<script>
+
+	$( "#usersignup" ).validate({
+	  rules: {
+		email: {
+			email: true,
+			required: true
+		},
+		password1: {
+		  required: true,
+		  minlength: 4
+		},
+		password2: {
+		  equalTo: "#password1"
+		}
+	  }
+	});
+	</script>
+	<!-- End Modal Signup Form -->
+	<!-- Modal Login Form -->
+	<div class="modal fade" id="login" role="dialog" style="padding:  5px;">
+		<div class="modal-dialog">
+		<div class="modal-content" style="padding: 30px;">
+		<form class="form-signin" name="form1" method="post" action="./login/checklogin.php">
+	    <div class="logoBox">
+			<span class="welcomeMsg">Please login to your account</span>
+		</div>
 		<div class="form-group" id="accountEmail-box">
 		  <label class="control-label" for="">Username/Email:</label>
-		  <input type="text" class="form-control" id="regist-email" >
+		  <input type="text" class="form-control" id="myusername" name="myusername" placeholder="Enter your username">
 		  <p class="errorMsg" id="regist-email-error"></p>
 		</div>
 		<div class="form-group" id="password-box">
 		  <label class="control-label" for="">Password:</label>
-		  <input type="password" class="form-control" id="regist-password" placeholder="Enter Username 8-20 letters/numbers">
+		  <input type="password" class="form-control" id="mypassword" name="mypassword" placeholder="Enter your password">
 		  <p class="errorMsg" id="regist-password-error"></p>
 		</div>
-		<div class="form-group" id="rept-password-box">
-		  <label class="control-label" for="">Confirm Password:</label>
-		  <input type="password" class="form-control" id="regist-rept-password" placeholder="">
-		  <p class="errorMsg" id="regist-rept-password-error"></p>
+			<a href="javascript:void(0)" class="btn btn2 btnSubmit" id="submitLogin" name="submitLogin" type="submit">Sign In</a>
+			<div id="messageSignIn"></div>
+		</form>
 		</div>
-		<div class="form-group form-group-captcha" id="captcha-box">
-		  <label class="control-label" for="">Captcha:</label>
-		  <div class="form-inline">
-			<input type="text" class="form-control" id="regist-captcha">
-			 <input type="hidden" id="regist-captcha-id">
-				<?php
-				echo '<img style="height:  34px;" src="' . $_SESSION['captcha']['image_src'] . '" alt="CAPTCHA code">';
-				?>
-			 <p class="errorMsg" id="regist-captcha-error"></p>
-		  </div>
-		</div>
-		<a href="javascript:void(0)" class="btn btn2 btnSubmit" id="regist-confirm-btn">Create new account</a>
-		  </div>
 		</div>
 	  </div>
-	<!-- End Modal Overlay Signup Form -->	
+	<script src="./login/js/login.js?v=3"></script>
+	<!-- End Model Login Form -->
+	<!-- Modal Account Form -->
+	<div class="modal fade" id="accountPage" role="dialog" style="padding:  5px;">
+	<div class="modal-dialog" style="width:  95%;">
+	<div class="modal-content" style="padding: 15px;">
+		<div class="logoBox">
+		<span class="welcomeMsg">Welcome to Solar Mine (SOM)</span>
+		</div>
+		<div class="form-group" id="SOM-box">
+		  <label class="control-label" for="">Your SOM:  </label><a href="javascript:void(0)" data-toggle='modal' data-target='#detailPage' class="btn btn2 btnSubmit" id="regist-confirm-btn">Detail</a>
+		  <input type="text" class="form-control" id="ValueSOM" >
+		</div>
+		<div class="form-group" id="BTC-box">
+		  <label class="control-label" for="">Your BTC:  </label><a href="javascript:void(0)" data-toggle='modal' data-target='#detailPage' class="btn btn2 btnSubmit" id="regist-confirm-btn">Detail</a>
+		  <input type="text" class="form-control" id="ValueBTC">
+		</div>
+		<div class="form-group" id="ETH-box">
+		  <label class="control-label" for="">Your ETH:  </label><a href="javascript:void(0)" data-toggle='modal' data-target='#detailPage' class="btn btn2 btnSubmit" id="regist-confirm-btn">Detail</a>
+		  <input type="text" class="form-control" id="ValueETH">
+		</div>
+	</div>
+	</div>
+	</div>
+	<!-- End Model Account Form -->
+	<!-- Modal Transaction Detail Form -->
+	<div class="modal fade" id="detailPage" role="dialog" style="padding:  5px; padding-top:  15px;">
+	<div class="modal-dialog modal-lg" style="width: 90%; padding:  5px; padding-left: 10px">
+	<div class="modal-content" style="padding: 15px;">
+		<div class="form-group" id="ETH-box">
+			<table class="m_table">
+			<tbody>
+				<tr>
+					<th>Time</th>
+					<th>Type</th>
+					<th>Amount (SOM)</th>
+					<th>Remarks</th>
+				</tr>
+			</tbody>
+			</table>
+		</div>
+	</div>
+	</div>
+	</div>
+	<!-- End Model Account Form -->
 	
 	</body>
 </html>
