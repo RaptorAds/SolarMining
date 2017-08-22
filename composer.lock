@@ -1,0 +1,68 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "72506d2612c090e689845410a6848900",
+    "packages": [
+        {
+            "name": "blockcypher/php-client",
+            "version": "v0.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/blockcypher/php-client.git",
+                "reference": "dcee889a80f4b07c486f65a7eb27698953d6901d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/blockcypher/php-client/zipball/dcee889a80f4b07c486f65a7eb27698953d6901d",
+                "reference": "dcee889a80f4b07c486f65a7eb27698953d6901d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "fabpot/goutte": "~2.0",
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "BlockCypher": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache2"
+            ],
+            "authors": [
+                {
+                    "name": "BlockChyper",
+                    "homepage": "https://github.com/blockchyper/php-client/contributors"
+                }
+            ],
+            "description": "BlockChyper's PHP SDK for REST API",
+            "homepage": "https://github.com/blockchyper/php-client",
+            "keywords": [
+                "bitcoin",
+                "blockchain",
+                "blockchyper",
+                "rest",
+                "sdk"
+            ],
+            "time": "2015-05-05T10:34:28+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

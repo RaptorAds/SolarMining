@@ -1,0 +1,10 @@
+{
+    "require": {
+        "blockcypher/php-client": "*"
+    }
+	
+	"require": {
+    "coinbase/coinbase": "~2.0"
+	}
+	
+}
