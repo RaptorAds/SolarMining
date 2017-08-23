@@ -652,7 +652,7 @@ $_SESSION['captcha'] = simple_php_captcha();
 			$mysqli->close();	
 		?>
 		<div class="logoBox">
-		<span class="welcomeMsg">Welcome to Solar Mine (SOM) &nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" data-toggle='modal' data-target='#detailPage' class="btn btn2 btnSubmit" id="regist-confirm-btn">Detail</a></span>
+		<span class="welcomeMsg">Welcome to Solar Mine (SOM) &nbsp;&nbsp;&nbsp;<a id='showTransaction' href="javascript:void(0)" data-toggle='modal' data-target='#detailPage' data-remote='false' class="btn btn2 btnSubmit" >Detail</a></span>
 		</div>
 		<div class="form-group" id="SOM-box">
 		  <label class="control-label" >Your SOM:  </label>
@@ -660,7 +660,7 @@ $_SESSION['captcha'] = simple_php_captcha();
 		</div>
 		<div class="form-group" id="BTC-box">
 		  <label class="control-label" >Your BTC:</label>
-		  <a href="./modal/depositBTC.php" data-remote="false" data-toggle="modal" data-target="#myModal" class="btn btn2 btnSubmit">Deposit</a>
+		  <a id='depositBTC' href="javascript:void(0)" data-remote="false" data-toggle="modal" data-target="#myModal" class="btn btn2 btnSubmit">Deposit</a>
 		  <input type="text" class="form-control" id="ValueBTC" value='<?php echo $netBTC; ?>' readonly style='cursor: default !important;'>
 		</div>
 		<div class="form-group" id="LTC-box">
@@ -679,71 +679,14 @@ $_SESSION['captcha'] = simple_php_captcha();
 	<div class="modal fade" id="detailPage" role="dialog" style="padding:  5px; padding-top:  15px;">
 	<div class="modal-dialog modal-lg" style="width: 90%; padding:  5px; padding-left: 10px">
 	<div class="modal-content" style="padding: 15px;">
-		<div class="form-group" id="Detail-box">
-			<table class="m_table">
-			<?php
-			## Get Transactions from DB ##
-			$mysqli = new mysqli("localhost", "natsoon", "IloveUMass#316", "ico");
-
-			/* check connection */
-			if ($mysqli->connect_errno) {
-				printf("Connect failed: %s\n", $mysqli->connect_error);
-				exit();
-			}
-			
-			$query = "SELECT 
-						address
-						, coinType
-						, Case When confirmations = 1 Then 'Confirmed' Else 'Pending' End As 'confirmations'
-						, amount
-						, mod_timestamp
-					FROM 
-						CoinTransaction 
-					WHERE memberId in (select id from members where username = '" . $_SESSION['username'] ."')";
-			$result = $mysqli->query($query);
-
-			while($row = $result->fetch_array())
-			{
-				$rows[] = $row;
-			}
-			
-			?>
-			<tbody>
-				<tr>
-					<th>Time</th>
-					<th>Type</th>
-					<th>Amount</th>
-					<th>Status</th>
-				</tr>
-				<?php	
-					foreach($rows as $row)
-					{
-						if ($row['mod_timestamp']){
-							if ($row['coinType'] == 'btc') {
-								$explorer = "https://live.blockcypher.com/btc/address/" . $row['address'] ;
-							} elseif ($row['coinType'] == 'ltc') {
-								$explorer = "https://live.blockcypher.com/ltc/address/" . $row['address'] ;
-							} else {
-								$explorer = "https://etherscan.io/address/" . $row['address'] ;
-							}
-							
-							echo "<tr>";
-							echo "<td>" . $row['mod_timestamp'] . "</td>";
-							echo "<td>" . strtoupper($row['coinType']) . "</td>";
-							echo "<td>" . $row['amount'] . "</td>";
-							echo "<td><a href='" .$explorer. "' target='_blank'>" . $row['confirmations'] . "</a></td>";
-							echo "</tr>";
-						}
-					}
-					/* free result set */
-					$result->close();
-
-					/* close connection */
-					$mysqli->close();				
-				?>
-			</tbody>
-			</table>
-		</div>
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title" id="myModalLabel">Transaction Details</h4>
+		  </div>
+		  <div class="modal-body-transaction" id="modal-body-transaction">
+		  <!-- Auto Load - External Source -->
+			...
+		  </div>
 	</div>
 	</div>
 	</div>
@@ -756,21 +699,22 @@ $_SESSION['captcha'] = simple_php_captcha();
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			<h4 class="modal-title" id="myModalLabel">Deposit Bitcoin</h4>
 		  </div>
-		  <div class="modal-body">
+		  <div class="modal-body" id="modal-body">
 		  <!-- Auto Load - External Source -->
 			...
 		  </div>
 		</div>
 	  </div>
 	</div>
-	<script>
-	// Fill modal with content from link href
-	$("#myModal").on("show.bs.modal", function(e) {
-		var link = $(e.relatedTarget);
-		$(this).find(".modal-body").load(link.attr("href"));
-	});
-	
-	</script>
+	<script type="text/javascript"> 
+		$("#depositBTC").click(function(){
+			$("#modal-body").load("./modal/depositBTC.php"); 
+		});
+		$("#showTransaction").click(function(){
+			$("#modal-body-transaction").load("./modal/transactions.php"); 
+		});
+		
+	</script> 
 	<!-- End Deposit Form -->
 	
 	</body>

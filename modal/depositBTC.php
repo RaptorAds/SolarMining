@@ -1,14 +1,12 @@
 <?php
-
+session_start();
 require_once('../vendor/autoload.php');
 
 use Coinbase\Wallet\Client;
 use Coinbase\Wallet\Configuration; 
-use Coinbase\Wallet\Resource\Account;
 use Coinbase\Wallet\Resource\Address;
-use Coinbase\Wallet\Enum\CurrencyCode;
-use Coinbase\Wallet\Resource\Transaction;
-use Coinbase\Wallet\Value\Money;
+
+date_default_timezone_set("ISO");
 
 	$apiKey = 'e1mSUBOTKXY3w49z';
 	$apiSecret = 'I2NkibuQGZ3wojG3z5q7jcVPjGW6wnE6';	
@@ -35,7 +33,7 @@ use Coinbase\Wallet\Value\Money;
 </style>
 <html>
 	<h>Please deposit BTC to the below address or QR code.</h>	
-	<input id="text" type="text" value="<?php echo $BTCAddress; ?>" style="width:80%" readonly/><br />
+	<input id="text" type="text" value="<?php echo $BTCAddress; ?>" style="width:95%" readonly/><br />
 	<div id="qrcode"></div>
 	</br></br>
 	<h>Note:  Each deposit generated a new address.  You can see all your transactions in the detail page.</h> 

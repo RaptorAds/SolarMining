@@ -1,5 +1,5 @@
 <?php
-require_once '/passwordLib.php';
+#require_once '/passwordLib.php';
 
 class LoginForm extends DbConn
 {
