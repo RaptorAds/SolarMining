@@ -15,17 +15,17 @@ date_default_timezone_set("ISO");
 	
 	#Generate address from API	
 
-	$account = $client->getPrimaryAccount();
+	$account = $client->getAccount('57a4aa9ce614ef17a183338a');
 	$address = new Address([
-		'name' => 'SolarICO - BTC'
+		'name' => 'SolarICO - ETH'
 	]);
 	$client->createAccountAddress($account, $address);
-	$BTCAddress = $address->getAddress();
+	$ETHAddress = $address->getAddress();
 		
 ?>
 <script type="text/javascript" src="../js/qrcode.js"></script>
 <style>
-#qrcode {
+#qrcode_ETH {
   width: 70px;
   height:70px;
   margin-top:5px;
@@ -33,18 +33,18 @@ date_default_timezone_set("ISO");
 </style>
 <html>
 	<h>Please deposit to the below address or QR code.</h>	
-	<input id="text" type="text" value="<?php echo $BTCAddress; ?>" style="width:95%" readonly/><br />
-	<div id="qrcode"></div>
+	<input id="text_ETH" type="text" value="<?php echo $ETHAddress; ?>" style="width:95%" readonly/><br />
+	<div id="qrcode_ETH"></div>
 	</br></br>
 	<h>Note:  Each deposit generated a new address.  You can see all your transactions in the detail page.</h> 
 <script type="text/javascript">
-var qrcode = new QRCode(document.getElementById("qrcode"), {
+var qrcode = new QRCode(document.getElementById("qrcode_ETH"), {
 	width : 100,
 	height : 100
 });
 
 function makeCode () {		
-	var elText = document.getElementById("text");
+	var elText = document.getElementById("text_ETH");
 	
 	if (!elText.value) {
 		alert("Input a text");

@@ -15,17 +15,17 @@ date_default_timezone_set("ISO");
 	
 	#Generate address from API	
 
-	$account = $client->getPrimaryAccount();
+	$account = $client->getAccount('58f9d03fa68baf0224246f98');
 	$address = new Address([
-		'name' => 'SolarICO - BTC'
+		'name' => 'SolarICO - LTC'
 	]);
 	$client->createAccountAddress($account, $address);
-	$BTCAddress = $address->getAddress();
+	$LTCAddress = $address->getAddress();
 		
 ?>
 <script type="text/javascript" src="../js/qrcode.js"></script>
 <style>
-#qrcode {
+#qrcode_LTC {
   width: 70px;
   height:70px;
   margin-top:5px;
@@ -33,18 +33,18 @@ date_default_timezone_set("ISO");
 </style>
 <html>
 	<h>Please deposit to the below address or QR code.</h>	
-	<input id="text" type="text" value="<?php echo $BTCAddress; ?>" style="width:95%" readonly/><br />
-	<div id="qrcode"></div>
+	<input id="text_LTC" type="text" value="<?php echo $LTCAddress; ?>" style="width:95%" readonly/><br />
+	<div id="qrcode_LTC"></div>
 	</br></br>
 	<h>Note:  Each deposit generated a new address.  You can see all your transactions in the detail page.</h> 
 <script type="text/javascript">
-var qrcode = new QRCode(document.getElementById("qrcode"), {
+var qrcode = new QRCode(document.getElementById("qrcode_LTC"), {
 	width : 100,
 	height : 100
 });
 
 function makeCode () {		
-	var elText = document.getElementById("text");
+	var elText = document.getElementById("text_LTC");
 	
 	if (!elText.value) {
 		alert("Input a text");

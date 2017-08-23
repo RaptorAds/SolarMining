@@ -665,10 +665,12 @@ $_SESSION['captcha'] = simple_php_captcha();
 		</div>
 		<div class="form-group" id="LTC-box">
 		  <label class="control-label">Your LTC:</label>
+		  <a id='depositLTC' href="javascript:void(0)" data-remote="false" data-toggle="modal" data-target="#myModal-LTC" class="btn btn2 btnSubmit">Deposit</a>
 		  <input type="text" class="form-control" id="ValueLTC" value='<?php echo $netLTC; ?>' readonly style='cursor: default !important;'>
 		</div>
 		<div class="form-group" id="ETH-box">
 		  <label class="control-label" >Your ETH:</label>
+		  <a id='depositETH' href="javascript:void(0)" data-remote="false" data-toggle="modal" data-target="#myModal-ETH" class="btn btn2 btnSubmit">Deposit</a>
 		  <input type="text" class="form-control" id="ValueETH" value='<?php echo $netETH; ?>' readonly style='cursor: default !important;'>
 		</div>
 	</div>
@@ -691,7 +693,7 @@ $_SESSION['captcha'] = simple_php_captcha();
 	</div>
 	</div>
 	<!-- End Model Transaction Detail Form -->
-	<!-- Deposit Form -->
+	<!-- Deposit Form (BTC) -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 		<div class="modal-content">
@@ -706,12 +708,48 @@ $_SESSION['captcha'] = simple_php_captcha();
 		</div>
 	  </div>
 	</div>
+	<!-- Deposit Form (ETH) -->
+	<div class="modal fade" id="myModal-ETH" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title" id="myModalLabel">Deposit Ethereum</h4>
+		  </div>
+		  <div class="modal-body" id="modal-body-ETH">
+		  <!-- Auto Load - External Source -->
+			...
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<!-- Deposit Form (LTC) -->
+	<div class="modal fade" id="myModal-LTC" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title" id="myModalLabel">Deposit Litecoin</h4>
+		  </div>
+		  <div class="modal-body" id="modal-body-LTC">
+		  <!-- Auto Load - External Source -->
+			...
+		  </div>
+		</div>
+	  </div>
+	</div>
 	<script type="text/javascript"> 
 		$("#depositBTC").click(function(){
 			$("#modal-body").load("./modal/depositBTC.php"); 
 		});
 		$("#showTransaction").click(function(){
 			$("#modal-body-transaction").load("./modal/transactions.php"); 
+		});
+		$("#depositETH").click(function(){
+			$("#modal-body-ETH").load("./modal/depositETH.php"); 
+		});
+		$("#depositLTC").click(function(){
+			$("#modal-body-LTC").load("./modal/depositLTC.php"); 
 		});
 		
 	</script> 
