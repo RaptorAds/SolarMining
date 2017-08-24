@@ -8,6 +8,8 @@ use Coinbase\Wallet\Resource\Address;
 
 date_default_timezone_set("ISO");
 
+if (isset($_SESSION['username']))
+{
 	$apiKey = 'e1mSUBOTKXY3w49z';
 	$apiSecret = 'I2NkibuQGZ3wojG3z5q7jcVPjGW6wnE6';	
 	$configuration = Configuration::apiKey($apiKey, $apiSecret);
@@ -21,6 +23,33 @@ date_default_timezone_set("ISO");
 	]);
 	$client->createAccountAddress($account, $address);
 	$LTCAddress = $address->getAddress();
+	
+	## Insert Transaction ##
+	
+	$mysqli = new mysqli("localhost", "natsoon", "IloveUMass#316", "ico");
+
+	/* check connection */
+	if ($mysqli->connect_errno) {
+		printf("Connect failed: %s\n", $mysqli->connect_error);
+		exit();
+	}
+	
+	$query = "Insert
+			INTO 
+				CoinTransaction (memberId, coinType, address)
+			VALUES 
+				(
+				(select id from members where username = '".$_SESSION['username']."')
+				, 'ltc'
+				, '".$LTCAddress."'
+				)
+			";
+	$result = $mysqli->query($query);
+
+	/* close connection */
+	$mysqli->close();
+	
+}
 		
 ?>
 <script type="text/javascript" src="../js/qrcode.js"></script>

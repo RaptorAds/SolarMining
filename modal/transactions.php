@@ -36,7 +36,7 @@ session_start();
 			?>
 			<tbody>
 				<tr>
-					<th>Time</th>
+					<th>Time (UTC-7) </th>
 					<th>Type</th>
 					<th>Amount</th>
 					<th>Status</th>
