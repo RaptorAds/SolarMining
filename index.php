@@ -24,15 +24,18 @@ $_SESSION['captcha'] = simple_php_captcha();
 		<link rel="stylesheet" href="css/animate.css">
 		<link rel="stylesheet" href="css/font-awesome.css">
 		<link rel="stylesheet" href="css/overwrite.css?v=1"> 
-        <link rel="stylesheet" href="css/style.css?v=1">
+        <link rel="stylesheet" href="css/style.css?v=2">
 		<link rel="stylesheet" type="text/css" href="css/overlay.css?v=2" />
 		<!-- skin -->
 		<link rel="stylesheet" href="skin/default.css">
     </head>
 	 
     <body>
-	
-	
+	<style>
+	html, body {
+		font-family:  PingFangSC, \5FAE\8F6F\96C5\9ED1 ,Helvetica,Arial;
+	}
+	</style>
 	<div class="header">
 	<section id="header" class="appear">
 		
@@ -79,42 +82,41 @@ $_SESSION['captcha'] = simple_php_captcha();
 
 <section class="featured">
 	<div id="index">
-			<!-- Responsive slider - START -->
-    	<div class="responsive-slider" data-spy="responsive-slider" data-autoplay="true">
-			<div class="slides" data-group="slides">
-				<ul>
-					<li>
-						<div class="slide-body" data-group="slide">
-							<img src="img/8.jpg" alt="">
-							<div class="caption header" data-animate="slideAppearUpToDown" data-delay="500" data-length="300">
-								<h2>Next Generation Mining Project</h2>
-								<div class="caption-sub" data-animate="slideAppearDownToUp" data-delay="1200" data-length="300"><h4><span>Sustainable Cryptocurrency Mining</span></h4></div>
-								<div class="caption-sub" data-animate="slideAppearLeftToRight" data-delay="800" data-length="300"><h3></h3></div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="slide-body" data-group="slide">
-							<img src="img/8.jpg" alt="">
-							<div class="caption header" data-animate="slideAppearDownToUp" data-delay="500" data-length="300">
-								<h2>Next generation mining project</h2>
-								<div class="caption-sub" data-animate="slideAppearUpToDown" data-delay="800" data-length="300"><h4><span>Combining Solar Power with Cryptocurrency Mining</span></h4></div>
-								<div class="caption-sub" data-animate="slideAppearRightToLeft" data-delay="1200" data-length="300"><h3></h3></div>
-							</div>
-						</div>
-					</li>
-  	    	</ul>
+		<!-- Responsive slider - START -->
+    	<div class="responsive-slider" data-spy="responsive-slider" data-autoplay="true" style="padding-top: 100px;">
+		<div class="slides" data-group="slides">
+		<style>
+		.image { 
+		   position: relative; 
+		   width: 100%; /* for IE 6 */
+		}
+
+		h2 { 
+		   position: absolute; 
+		   top: 200px; 
+		   left: 0; 
+		   width: 100%; 
+		}
+		h2 span { 
+		   color: white; 
+		   font: bold 24px/45px Helvetica, Sans-Serif;
+		   background: rgb(0, 0, 0);
+		   background: rgba(0, 0, 0, 0.7);
+		   padding: 10px; 
+		}
+		h2 span.spacer {
+		   padding:0 5px;
+		}
+		</style>
+		<div class="image">
+			<img src="img/solarfarm.png" alt="" />
+			<h2><span>Next Generation Cryptocurrency Mining</span></h2>
 		</div>
-        
-        <a class="slider-control left" href="#" data-jump="prev"><i class="fa fa-angle-left fa-2x"></i></a>
-        <a class="slider-control right" href="#" data-jump="next"><i class="fa fa-angle-right fa-2x"></i></a>
-        
-		
+		</div>
     	</div>
       <!-- Responsive slider - END -->
 	</div>
-		</section>
-		
+	</section>
 	<!--about-->
 	<section id="section-about" class="section appear clearfix">
 		<div class="container">
@@ -123,56 +125,36 @@ $_SESSION['captcha'] = simple_php_captcha();
 					<div class="col-md-offset-3 col-md-6">
 						<div class="title">
 							<div class="wow bounceIn">
-						
-							<h2 class="section-heading animated" data-animation="bounceInUp">SolarMine Project</h2>
+							<h1 class="section-heading animated" data-animation="bounceInUp">SolarMine Project</h1>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="row">
-			
-					<div class="row-slider">
-						<div class="col-lg-6 mar-bot30">
-							<div class="responsive-slider" data-spy="responsive-slider" data-autoplay="true">
-								<div class="slides" data-group="slides">
+					<div class="col-lg-6 " style="width:  100%;">
+						<div class="company mar-left10">
+							<h4>Next generation cryptocurrency project combining solar power and cryptpocurrency mining.</h4>
+							<p>We will introduce token “SOM” for secondary market. ICO participants will get the tokens and ROI in the form of SOM.  The project will develop large-scale solar farm which will provide electricity support for clustered mining operation.  The issue of SOM will allow investors to trade in secondary market and achieve premium with liquidity. Meanwhile, the asset of mining hardware and the stable daily mining yields will support the price of SOM.  Investors of SolarMine will profit from </p>
+						</div>
+						<div class="list-style">
+							<div class="row">
+								<div class="col-lg-6 col-sm-6 col-xs-12">
 									<ul>
-  	    		
-										<div class="slide-body" data-group="slide">
-											<li><img alt="" class="img-responsive" src="img/9.jpg" width="100%" height="350"/></li>
-											<li><img alt="" class="img-responsive" src="img/10.jpg" width="100%" height="350"/></li>
-										</div>
+										<li>Sustainable & Renewable Energy</li>
+										<li>High Efficiency Clustered Mining</li>
 									</ul>
-										<a class="slider-control left" href="#" data-jump="prev"><i class="fa fa-angle-left fa-2x"></i></a>
-										<a class="slider-control right" href="#" data-jump="next"><i class="fa fa-angle-right fa-2x"></i></a>
+								</div>
+								<div class="col-lg-6 col-sm-6 col-xs-12">
+									<ul>
+										<li>Monthly Dividend Payouts</li>
+										<li>Investment Liquidity</li>
+										<li>Asset Transparency</li>
+									</ul>
+								</div>
 								
-								</div>
 							</div>
 						</div>
-					
-						<div class="col-lg-6 ">
-							<div class="company mar-left10">
-								<h4>Next generation crytocurrency project combining solar power and crytpocurrency mining.</h4>
-								<p>We will introduce token “SOM” for secondary market. ICO participants will get the tokens and ROI in the form of SOM.  The project will develop large-scale solar farm which will provide electricity support for clustered mining operation.  The issue of SOM will allow investors to trade in secondary market and achieve premium with liquidity. Meanwhile, the asset of mining hardware and the stable daily mining yields will support the price of SOM.  Investors of SolarMine will profit from </p>
-							</div>
-							<div class="list-style">
-								<div class="row">
-									<div class="col-lg-6 col-sm-6 col-xs-12">
-										<ul>
-											<li>Sustainable & Renewable Energy</li>
-											<li>High Efficiency Clustered Mining</li>
-										</ul>
-									</div>
-									<div class="col-lg-6 col-sm-6 col-xs-12">
-										<ul>
-											<li>Monthly Dividend Payouts</li>
-											<li>Investment Liquidity</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-					
-					</div>	
+					</div>
 				</div>
 					
 			</div>
@@ -190,7 +172,7 @@ $_SESSION['captcha'] = simple_php_captcha();
 						<div class="section-header">
 						<div class="wow bounceIn">
 						
-							<h2 class="section-heading animated" data-animation="bounceInUp">Stable and Sustainable Mining</h2>
+							<h1 class="section-heading animated" data-animation="bounceInUp">Stable and Sustainable Mining</h1>
 					
 						</div>
 						</div>
@@ -262,13 +244,14 @@ $_SESSION['captcha'] = simple_php_captcha();
 					<div class="col-md-offset-3 col-md-6">
 						<div class="section-header">
 							<div class="wow bounceIn">						
-								<h2 class="section-heading animated" data-animation="bounceInUp">Roadmap</h2>
+								<h1 class="section-heading animated" data-animation="bounceInUp">Roadmap</h1>
 							</div>
 						</div>
 					</div>
 				</div>
 				
 			</div>
+			</br></br></br>
 			<!-- Begin Timeline -->
 			<div class="bar" style="text-align: center;" ></div>
 			<div class="timeline">
@@ -298,24 +281,24 @@ $_SESSION['captcha'] = simple_php_captcha();
 			
 		<!-- End Timeline -->
 		</section>
+		</br></br></br></br></br></br></br>
 		<!-- contact -->
 		<section id="section-contact" class="section appear clearfix">
-			<div class="container">
+		<div class="container">
 				
 				<div class="row mar-bot40">
 					<div class="col-md-offset-3 col-md-6">
 						<div class="section-header">
-							<h2 class="section-heading animated" data-animation="bounceInUp">FAQ</h2>
+							<h1 class="section-heading animated" data-animation="bounceInUp">FAQ</h1>
 						</div>
 					</div>
 				</div>
 				<div class="indexMod modFAQ" id="faqpoint">
         <div class="container">
-            <h3 class="modTitle">FAQ</h3>
             <ul class="faqList">
                 <li class="faqItem">
                     <a class="ques collapsed" data-toggle="collapse" href="#ans1" aria-expanded="false">1. What is the SOM?
-<span class="faqCollaspe"></span></a>
+					<span class="faqCollaspe"></span></a>
                     <div class="ansBox collapse" id="ans1" aria-expanded="false" style="height: 0px;">
                         <p>SOM (SolarMine) is a cryptocurrency mining project.  The project will introduce the token “SOM” within ethereum protocol and is equipped with liquidity, decentralization and transparency.
                         </p>
@@ -542,7 +525,7 @@ $_SESSION['captcha'] = simple_php_captcha();
 					<input name="password1" id="password1" type="password" class="form-control" placeholder="Password">
 					<input name="password2" id="password2" type="password" class="form-control" placeholder="Repeat Password">
 					</br>
-					<a href="javascript:void(0)" name="Submit" id="submit" class="btn btn2 btnSubmit" type="submit">Sign up</a>
+					<a href="javascript:void(0)" name="submitSignup" id="submitSignup" class="btn btn2 btnSubmit" type="submit">Sign up</a>
 					<div id="message"></div>
 				</form>
 				</div>
@@ -554,8 +537,8 @@ $_SESSION['captcha'] = simple_php_captcha();
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <!-- <script src="//code.jquery.com/jquery.js"></script> -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script type="text/javascript" src="./login/js/bootstrap.js"></script>
-    <script src="./login/js/signup.js?v=1"></script>
+    <!-- <script type="text/javascript" src="./login/js/bootstrap.js"></script> -->
+    <script src="./login/js/signup.js?v=3"></script>
     <script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
 	<script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
 	<script>
@@ -596,12 +579,14 @@ $_SESSION['captcha'] = simple_php_captcha();
 		  <p class="errorMsg" id="regist-password-error"></p>
 		</div>
 			<a href="javascript:void(0)" class="btn btn2 btnSubmit" id="submitLogin" name="submitLogin" type="submit">Sign In</a>
+			<a href="javascript:void(0)" class="btn btn2 btnSubmit" id="submitForgot" name="submitForgot" type="submit">Forgot Password</a>
 			<div id="messageSignIn"></div>
 		</form>
 		</div>
 		</div>
 	  </div>
 	<script src="./login/js/login.js?v=3"></script>
+	<script src="./login/js/forgotpassword.js?v=3"></script>
 	<!-- End Model Login Form -->
 	<!-- Modal Account Form -->
 	<div class="modal fade" id="accountPage" role="dialog" style="padding:  5px;">
@@ -628,11 +613,17 @@ $_SESSION['captcha'] = simple_php_captcha();
 						coinType
 					";
 			$result = $mysqli->query($query);
-
+			
 			while($row = $result->fetch_array())
 			{
 				$rows[] = $row;
 			}
+			/* Initiailize amount */
+			$netBTC = '0.00';
+			$netETH = '0.00';
+			$netLTC = '0.00';
+			$netSOM = '0.00';
+			
 			foreach($rows as $row)
 			{
 				if ($row['coinType'] == 'btc') 
@@ -640,10 +631,11 @@ $_SESSION['captcha'] = simple_php_captcha();
 					$netBTC =  $row['amount'] ;
 				} elseif ($row['coinType'] == 'ltc') {
 					$netLTC =  $row['amount'] ;
-				} else {
+				} elseif ($row['coinType'] == 'eth') {
 					$netETH =  $row['amount'] ;
+				} elseif ($row['coinType'] == 'som') {
+					$netSOM =  $row['amount'] ;
 				}
-				
 			}
 			/* free result set */
 			$result->close();
@@ -656,7 +648,7 @@ $_SESSION['captcha'] = simple_php_captcha();
 		</div>
 		<div class="form-group" id="SOM-box">
 		  <label class="control-label" >Your SOM:  </label>
-		  <input type="text" class="form-control" id="ValueSOM" readonly style='cursor: default !important;'>
+		  <input type="text" class="form-control" id="ValueSOM" value='<?php echo $netSOM; ?>' readonly style='cursor: default !important;'>
 		</div>
 		<div class="form-group" id="BTC-box">
 		  <label class="control-label" >Your BTC:</label>
@@ -680,7 +672,7 @@ $_SESSION['captcha'] = simple_php_captcha();
 	<!-- Modal Transaction Detail Form -->
 	<div class="modal fade" id="detailPage" role="dialog" style="padding:  5px; padding-top:  15px;">
 	<div class="modal-dialog modal-lg" style="width: 90%; padding:  5px; padding-left: 10px">
-	<div class="modal-content" style="padding: 15px;">
+	<div class="modal-content" style="padding: 15px; padding-bottom: 60px;">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			<h4 class="modal-title" id="myModalLabel">Transaction Details</h4>

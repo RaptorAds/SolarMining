@@ -707,7 +707,7 @@ button[type="submit"].light:hover {
 	padding-bottom:0;
 	margin-left:-15px;
 	margin-top: -20px;
-	width:160px;
+	width: 80%;
 }
 .navbar .navbar-nav > .active > a {
 	padding-bottom: 0px;

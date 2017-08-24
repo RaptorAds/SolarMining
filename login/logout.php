@@ -1,4 +1,5 @@
 <?php
-    session_start();
-    session_destroy();
-    header("location:../index.php");
+require "autoload.php";
+LoginHandler::logout();
+
+header("location:../index.php");
