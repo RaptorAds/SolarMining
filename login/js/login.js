@@ -3,7 +3,8 @@ $(document).ready(function () {
     $("#submitLogin").click(function () {
 
         var username = $("#myusername").val(), password = $("#mypassword").val();
-
+		var my2fa = $("#my2FA").val();
+		
         if ($("#remember").is(":checked")){
             var remember = 1;
         } else {
@@ -19,7 +20,7 @@ $(document).ready(function () {
             $.ajax({
                 type: "POST",
                 url: "../login/ajax/checklogin.php",
-                data: "myusername=" + username + "&mypassword=" + password + "&remember=" + remember,
+                data: "myusername=" + username + "&mypassword=" + password + "&remember=" + remember + "&my2fa=" + my2fa,
                 dataType: 'JSON',
                 success: function (html) {
 

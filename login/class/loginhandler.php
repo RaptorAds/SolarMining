@@ -7,7 +7,7 @@ class LoginHandler extends AppConfig
     /**
     * Checks user login
     **/
-    public function checkLogin($myusername, $mypassword, $cookie = 0)
+    public function checkLogin($my2fa ,$myusername, $mypassword, $cookie = 0)
     {
         $ip_address = $_SERVER["REMOTE_ADDR"];
         $login_timeout = (int)$this->login_timeout;
@@ -49,6 +49,8 @@ class LoginHandler extends AppConfig
 
              //If max attempts not exceeded, continue
             // Checks password entered against db password hash
+			// add check 2fa
+			if ($my2fa == 'true'){
             if (PasswordCrypt::checkPw($mypassword, $result['password']) && $result['verified'] == '1') {
 
                 //Success! Register $myusername, $mypassword and return "true"
@@ -83,7 +85,11 @@ class LoginHandler extends AppConfig
                 $success = "<div class=\"alert alert-danger alert-dismissable\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>Wrong Username or Password</div>";
 
             }
-        }
+        } else {
+			// fail 2fa
+			$success = "<div class=\"alert alert-danger alert-dismissable\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>Wrong 2FA pin</div>";
+		}
+		}
         return $success;
     }
     /**

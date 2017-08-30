@@ -578,15 +578,31 @@ $_SESSION['captcha'] = simple_php_captcha();
 		  <input type="password" class="form-control" id="mypassword" name="mypassword" placeholder="Enter your password">
 		  <p class="errorMsg" id="regist-password-error"></p>
 		</div>
+		<div class="form-group" id="2fa-box">
+			<input type="checkbox" id="2fa_question" name="2fa_question">Use Authenticator
+			<input type="text" class="form-control" id="my2FA" name="my2FA" placeholder="Enter Pin">
+		</div>
+		<div class="form-group">
 			<a href="javascript:void(0)" class="btn btn2 btnSubmit" id="submitLogin" name="submitLogin" type="submit">Sign In</a>
 			<a href="javascript:void(0)" class="btn btn2 btnSubmit" id="submitForgot" name="submitForgot" type="submit">Forgot Password</a>
 			<div id="messageSignIn"></div>
+		</div>
 		</form>
 		</div>
 		</div>
 	  </div>
-	<script src="./login/js/login.js?v=3"></script>
+	<script src="./login/js/login.js?v=4"></script>
 	<script src="./login/js/forgotpassword.js?v=3"></script>
+	<script>
+		$("#my2FA").hide();
+		$("#2fa_question").change(function() {
+			if(document.getElementById('2fa_question').checked) {
+				$("#my2FA").show();
+			} else {
+				$("#my2FA").hide();
+			}
+		});
+	</script>
 	<!-- End Model Login Form -->
 	<!-- Modal Account Form -->
 	<div class="modal fade" id="accountPage" role="dialog" style="padding:  5px;">
@@ -603,10 +619,12 @@ $_SESSION['captcha'] = simple_php_captcha();
 			}
 			
 			$query = "SELECT 
-						coinType
+						b.status_google as status_google
+						,coinType
 						, sum(amount) as amount
 					FROM 
-						CoinTransaction 
+						CoinTransaction
+						left join members b on b.id = CoinTransaction.memberId
 					WHERE 
 						memberId in (select id from members where username = '" . $_SESSION['username'] ."')
 					GROUP BY
@@ -636,6 +654,8 @@ $_SESSION['captcha'] = simple_php_captcha();
 				} elseif ($row['coinType'] == 'som') {
 					$netSOM =  $row['amount'] ;
 				}
+				/* Initilize Status 2FA */
+				$googleAuthStatus =  $row['status_google'] ;
 			}
 			/* free result set */
 			$result->close();
@@ -644,7 +664,17 @@ $_SESSION['captcha'] = simple_php_captcha();
 			$mysqli->close();	
 		?>
 		<div class="logoBox">
-		<span class="welcomeMsg">Welcome to Solar Mine (SOM) &nbsp;&nbsp;&nbsp;<a id='showTransaction' href="javascript:void(0)" data-toggle='modal' data-target='#detailPage' data-remote='false' class="btn btn2 btnSubmit" >Detail</a></span>
+		<span class="welcomeMsg">Welcome to Solar Mine (SOM) &nbsp;&nbsp;&nbsp;
+			<a id='showTransaction' href="javascript:void(0)" data-toggle='modal' data-target='#detailPage' data-remote='false' class="btn btn2 btnSubmit" >Detail</a>
+			<?php 
+				if ($googleAuthStatus == 1){
+					echo "<a id='googleverDisable' href='javascript:void(0)' data-toggle='modal' data-target='#detailgoogleDisable' data-remote='false' class='btn btn2 btnSubmit' >Disable 2FA</a>";
+				} 
+				else {
+					echo "<a id='googlever' href='javascript:void(0)' data-toggle='modal' data-target='#detailgoogle' data-remote='false' class='btn btn2 btnSubmit' >Enable 2FA</a>";
+				}
+			?>
+		</span>
 		</div>
 		<div class="form-group" id="SOM-box">
 		  <label class="control-label" >Your SOM:  </label>
@@ -730,6 +760,24 @@ $_SESSION['captcha'] = simple_php_captcha();
 		</div>
 	  </div>
 	</div>
+	<!-- 2FA -->
+	<div class="modal fade" id="detailgoogle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title" id="myModalLabel">Google Authenticator</h4>
+		  </div>
+		  <div class="modal-body" id="modal-google">
+		  <!-- Auto Load - External Source -->
+			...
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<div class="modal fade" id="detailgoogleDisable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-body" id="modal-googleDisable">
+	</div>
 	<script type="text/javascript"> 
 		$("#depositBTC").click(function(){
 			$("#modal-body").load("./modal/depositBTC.php"); 
@@ -743,6 +791,16 @@ $_SESSION['captcha'] = simple_php_captcha();
 		$("#depositLTC").click(function(){
 			$("#modal-body-LTC").load("./modal/depositLTC.php"); 
 		});
+		$("#googlever").click(function(){
+			$("#modal-google").load("./login/2FA.php"); 
+		});
+		$('#googleverDisable').click(function() {
+		if (confirm('Please confirm disable 2FA?')) {
+		  var url = $(this).attr('href');
+		  $("#modal-googleDisable").load("./login/2FADisable.php"); 
+		}
+		});
+		
 		
 	</script> 
 	<!-- End Deposit Form -->

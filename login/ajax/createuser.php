@@ -1,5 +1,11 @@
 <?php
 require '../autoload.php';
+require_once '../googleLib/GoogleAuthenticator.php';
+$gauth = new GoogleAuthenticator();
+
+
+$secret_key = $gauth->createSecret();
+
 try {
     //Pull username, generate new ID and hash password
     $newid = uniqid(rand(), false);
@@ -12,7 +18,10 @@ try {
     $newemail = $_POST['email'];
     $pw1 = $_POST['password1'];
     $pw2 = $_POST['password2'];
-    $userarr = Array(Array('id'=>$newid, 'username'=>$newuser, 'email'=>$newemail, 'pw'=>$pw1));
+	
+	$secret_key = $_POST['googlever'];
+	
+    $userarr = Array(Array('id'=>$newid, 'username'=>$newuser, 'email'=>$newemail, 'pw'=>$pw1, 'secret_key'=>@secret_key ));
 
     $config = new AppConfig;
 
