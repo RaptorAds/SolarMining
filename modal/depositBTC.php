@@ -97,5 +97,4 @@ $("#text").
 	});
 
 </script>
-</script>
 </html>

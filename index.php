@@ -678,6 +678,7 @@ $_SESSION['captcha'] = simple_php_captcha();
 		</div>
 		<div class="form-group" id="SOM-box">
 		  <label class="control-label" >Your SOM:  </label>
+		  <a id='convertBtn' href="javascript:void(0)" data-remote="false" data-toggle="modal" data-target="#convertPage" class="btn btn2 btnSubmit">Buy</a>
 		  <input type="text" class="form-control" id="ValueSOM" value='<?php echo $netSOM; ?>' readonly style='cursor: default !important;'>
 		</div>
 		<div class="form-group" id="BTC-box">
@@ -775,9 +776,29 @@ $_SESSION['captcha'] = simple_php_captcha();
 		</div>
 	  </div>
 	</div>
+	<!-- End 2FA -->
+	<!-- Disable 2FA -->
 	<div class="modal fade" id="detailgoogleDisable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-body" id="modal-googleDisable">
+		</div>
 	</div>
+	<!-- End Disable 2FA -->
+	<!-- Convert -->
+	<div class="modal fade" id="convertPage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" style="width:  90% !important;">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title" id="myModalLabel">Convert Deposit</h4>
+		  </div>
+		  <div class="modal-body" id="modal-body-convert">
+		  <!-- Auto Load - External Source -->
+			...
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<!-- End Convert -->
 	<script type="text/javascript"> 
 		$("#depositBTC").click(function(){
 			$("#modal-body").load("./modal/depositBTC.php"); 
@@ -790,6 +811,9 @@ $_SESSION['captcha'] = simple_php_captcha();
 		});
 		$("#depositLTC").click(function(){
 			$("#modal-body-LTC").load("./modal/depositLTC.php"); 
+		});
+		$("#convertBtn").click(function(){
+			$("#modal-body-convert").load("./modal/test.php"); 
 		});
 		$("#googlever").click(function(){
 			$("#modal-google").load("./login/2FA.php"); 
