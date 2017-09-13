@@ -651,7 +651,7 @@ $_SESSION['captcha'] = simple_php_captcha();
 					$netLTC =  $row['amount'] ;
 				} elseif ($row['coinType'] == 'eth') {
 					$netETH =  $row['amount'] ;
-				} elseif ($row['coinType'] == 'som') {
+				} elseif ($row['coinType'] == 'SOM') {
 					$netSOM =  $row['amount'] ;
 				}
 				/* Initilize Status 2FA */

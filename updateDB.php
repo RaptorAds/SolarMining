@@ -64,7 +64,7 @@
 			$result2->close();
 
 			/* close connection */
-			$mysqli->close();	
+			$mysqli2->close();	
 		}		
 	}
 	/* free result set */

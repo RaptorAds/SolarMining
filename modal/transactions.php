@@ -49,19 +49,25 @@ session_start();
 					foreach($rows as $row)
 					{
 						if ($row['mod_timestamp']){
-							if ($row['coinType'] == 'btc') {
+							if ($row['coinType'] == 'btc' &&  $row['address'] != 'SOM') {
 								$explorer = "https://live.blockcypher.com/btc/address/" . $row['address'] ;
-							} elseif ($row['coinType'] == 'ltc') {
+							} elseif ($row['coinType'] == 'ltc' &&  $row['address'] != 'SOM') {
 								$explorer = "https://live.blockcypher.com/ltc/address/" . $row['address'] ;
-							} else {
+							} elseif ($row['coinType'] == 'eth' &&  $row['address'] != 'SOM')  {
 								$explorer = "https://etherscan.io/address/" . $row['address'] ;
+							} else {
+								$explorer = "#";
 							}
 							
 							echo "<tr>";
 							echo "<td>" . $row['mod_timestamp'] . "</td>";
 							echo "<td>" . strtoupper($row['coinType']) . "</td>";
 							echo "<td>" . $row['amount'] . "</td>";
-							echo "<td><a href='" .$explorer. "' target='_blank'>" . $row['confirmations'] . "</a></td>";
+							if ($explorer == '#'){
+								echo "<td><a href='" .$explorer. "'>" . $row['confirmations'] . "</a></td>";
+							} else {
+								echo "<td><a href='" .$explorer. "' target='_blank'>" . $row['confirmations'] . "</a></td>";
+							}
 							echo "</tr>";
 						}
 					}

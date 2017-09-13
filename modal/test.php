@@ -287,7 +287,7 @@ function submitClick() {
       $.ajax({
         type: "POST",
         url: "modal/ajax/buySOM.php",
-        data: "buySomBTC=" + buySomBTC + "&buySomLTC=" + buySomLTC + "&buySomETH=" + buySomETH + "&clickType=" + clickType,
+        data: "buySomBTC=" + buySomBTC + "&buySomLTC=" + buySomLTC + "&buySomETH=" + buySomETH + "&clickType=" + clickType +"&rateBTC=<? echo $PriceBTC; ?>" + "&rateLTC=<? echo $PriceLTC; ?>" + "&rateETH=<? echo $PriceETH;?>",
         success: function (html) {
 
           var text = $(html).text();
