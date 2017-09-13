@@ -637,10 +637,10 @@ $_SESSION['captcha'] = simple_php_captcha();
 				$rows[] = $row;
 			}
 			/* Initiailize amount */
-			$netBTC = '0.00';
-			$netETH = '0.00';
-			$netLTC = '0.00';
-			$netSOM = '0.00';
+			$netBTC = '0.00000000';
+			$netETH = '0.00000000';
+			$netLTC = '0.00000000';
+			$netSOM = '0.00000000';
 			
 			foreach($rows as $row)
 			{
@@ -677,6 +677,7 @@ $_SESSION['captcha'] = simple_php_captcha();
 		</span>
 		</div>
 		<div class="form-group" id="SOM-box">
+		</br>
 		  <label class="control-label" >Your SOM:  </label>
 		  <a id='convertBtn' href="javascript:void(0)" data-remote="false" data-toggle="modal" data-target="#convertPage" class="btn btn2 btnSubmit">Buy</a>
 		  <input type="text" class="form-control" id="ValueSOM" value='<?php echo $netSOM; ?>' readonly style='cursor: default !important;'>
