@@ -146,7 +146,7 @@ try {
 			(
 			(select id from members where username = '".$_SESSION['username']."')
 			, 'SOM'
-			, 'btc'
+			, 'BTC purchase @ ".$rateBTC."'
 			, '". floatval($buySomBTC) ."'
 			, '1'
 			);
@@ -173,7 +173,7 @@ try {
 			(
 			(select id from members where username = '".$_SESSION['username']."')
 			, 'SOM'
-			, 'ltc'
+			, 'LTC purchase @ ".$rateLTC."'
 			, '". floatval($buySomLTC) ."'
 			, '1'
 			);
@@ -199,7 +199,7 @@ try {
 			(
 			(select id from members where username = '".$_SESSION['username']."')
 			, 'SOM'
-			, 'eth'
+			, 'ETH purchase @ ".$rateETH."'
 			, '". floatval($buySomETH) ."'
 			, '1'
 			);

@@ -64,7 +64,7 @@ session_start();
 							echo "<td>" . strtoupper($row['coinType']) . "</td>";
 							echo "<td>" . $row['amount'] . "</td>";
 							if ($explorer == '#'){
-								echo "<td><a href='" .$explorer. "'>" . $row['confirmations'] . "</a></td>";
+								echo "<td><a href='" .$explorer. "'><p title='".$row['address']."'>" . $row['confirmations'] . "</p></a></td>";
 							} else {
 								echo "<td><a href='" .$explorer. "' target='_blank'>" . $row['confirmations'] . "</a></td>";
 							}
